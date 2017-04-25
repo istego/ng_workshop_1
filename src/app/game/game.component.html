@@ -1,0 +1,33 @@
+<md-toolbar>
+  <button md-button (click)="toggle()">
+    <ng-container *ngIf="!isStarted()">
+      <md-icon>play_arrow</md-icon>
+      <span>Start</span>
+    </ng-container>
+    <ng-container *ngIf="isStarted()">
+      <md-icon *ngIf="isStarted()">stop</md-icon>
+      <span>Stop</span>
+    </ng-container>
+  </button>
+  <span fxFlex></span>
+  <span class="score">
+    <md-icon [svgIcon]="fruitType()"></md-icon>
+    <span>{{ score() }}</span>
+  </span>
+  <span fxFlex></span>
+  <button md-icon-button (click)="toggleSettings()">
+    <md-icon>settings</md-icon>
+  </button>
+</md-toolbar>
+<md-toolbar *ngIf="isSettingsOpen">
+  <form [formGroup]="settingForm" (ngSubmit)="onSubmit()" novalidate>
+    <md-input-container>
+      <input mdInput placeholder="Interval" formControlName="interval">
+    </md-input-container>
+    <button md-raised-button type="submit" color="primary">Submit</button>
+  </form>
+</md-toolbar>
+
+<div fxLayoutAling="center center">
+  <board [boardIn]="board"></board>
+</div>

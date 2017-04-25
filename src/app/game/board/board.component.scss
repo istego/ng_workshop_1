@@ -1,0 +1,12 @@
+:host {
+  display: block;
+  .row {
+    border: 1px dotted #455a64;
+    width: 28px;
+    height: 28px;
+    display: inline-block;
+  }
+  .column {
+    height: 28px;
+  }
+}
